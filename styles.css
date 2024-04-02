@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    transition: background-color 8s ease;
+    transition: background-color 10s ease;
 }
 
 h1 {
@@ -141,6 +141,7 @@ img.bgImage {
 
 img.bgImage:hover {
     opacity: 1 !important;
+    z-index: 2;
 }
 
 @keyframes appear {
