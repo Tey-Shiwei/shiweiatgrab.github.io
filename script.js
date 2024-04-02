@@ -12,6 +12,9 @@ fetchMessages().then(data => {
 }).catch(error => {
     console.error('JSON read Error:', error);
     message_dict = {
+        "paragraph1": "paragraph1",
+        "paragraph2": "paragraph2",
+        "paragraph3": "paragraph3",
         "827eaabb74575219c42595c8f9ab7dd5ef88934196cac9ed99ab807230aaac97": "Input your Grab's slack handle to view the goodbye messages.",
         "0aa751fdcd16ae43566956897f95e0ff75d3b4021d15e6bba97e350980b37ff0":"x", // Test
     }
@@ -33,11 +36,6 @@ async function fetchMessages() {
 }
 function clean(rawInput) {
     return rawInput.trim().replace(" ", ".").toLowerCase();
-}
-function hashString(inputString) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(inputString);
-    return window.crypto.subtle.digest('SHA-256', data);
 }
 async function hashString(inputString) {
     const encoder = new TextEncoder();
@@ -96,14 +94,15 @@ stopShaking.addEventListener('click', function () {
     this.classList.add('shake', 'clicked');
 });
 
-revealButton.addEventListener('click', function () {
-    if (!checkName()) {
-        return;
-    }
+revealButton.addEventListener('click', async function () {
     // Reveal
     backButton.classList.remove('hidden');
     messagesHeading.classList.remove('hidden');
-    displayMessages();
+    try {
+        await displayMessages();
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
     var images = document.getElementsByClassName('bgImage');
     for (var i = 0; i < images.length; i++) {
         images[i].classList.remove('hidden');
@@ -134,4 +133,4 @@ window.onload = function () {
     });
 };
 
-document.getElementById('nameInput').addEventListener('change', checkName);
+document.getElementById('nameInput').addEventListener('change', () => {checkName();});
