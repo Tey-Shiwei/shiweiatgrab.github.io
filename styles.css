@@ -108,7 +108,7 @@ button2:hover {
     border-right: 0.1em solid black; /* simulate the typing cursor */
     white-space: nowrap; /* prevent wrapping on whitespace */
     overflow: hidden; /* ensure that the content is clipped */
-    width: 25ch; /* define the display width */
+    width: 30ch; /* define the display width */
     animation: 
         typing 2s steps(14, end),
         blink-caret .5s step-end infinite,
