@@ -123,7 +123,7 @@ backButton.addEventListener('click', function () {
 });
 
 window.onload = function () {
-    console.log('v1')
+    console.log('v2')
     inputtext.classList.add('shake');
     var images = document.querySelectorAll('.background-grid img');
     images.forEach((img) => {
