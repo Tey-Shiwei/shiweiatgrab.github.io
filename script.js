@@ -12,7 +12,8 @@ fetchMessages().then(data => {
 }).catch(error => {
     console.error('JSON read Error:', error);
     message_dict = {
-        'shiwei.tey': "Input your Grab's slack handle to view the goodbye messages.",
+        "827eaabb74575219c42595c8f9ab7dd5ef88934196cac9ed99ab807230aaac97": "Input your Grab's slack handle to view the goodbye messages.",
+        "0aa751fdcd16ae43566956897f95e0ff75d3b4021d15e6bba97e350980b37ff0":"x", // Test
     }
 });
 
@@ -33,15 +34,29 @@ async function fetchMessages() {
 function clean(rawInput) {
     return rawInput.trim().replace(" ", ".").toLowerCase();
 }
+function hashString(inputString) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(inputString);
+    return window.crypto.subtle.digest('SHA-256', data);
+}
+async function hashString(inputString) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(inputString);
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 function capitalName(name) {
     return name
         .split('.')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 }
-function checkName() {
+async function checkName() {
     const name = clean(nameInput.value);
-    if (!(name !== "" && message_dict[name])) {
+    const hashedValue = await hashString(name);
+
+    if (!(name !== "" && message_dict[hashedValue])) {
         alert("Invalid slack handle! Follow these formats:\nshiwei.tey or Shiwei Tey");
         nameInput.value = "";
         nameInput.focus();
@@ -50,8 +65,9 @@ function checkName() {
     revealButton.click();
     return true;
 }
-function displayMessages() {
+async function displayMessages() {
     const name = clean(nameInput.value);
+    const hashedValue = await hashString(name);
     let message = '';
     const defaultMessages = [
         message_dict['paragraph1'],
@@ -60,7 +76,7 @@ function displayMessages() {
     ];
 
     message += `<p class='typing-effect'>Last hello ${capitalName(name)}!</p>`;
-    message += `<p class='message'>${message_dict[name]}</p>`;
+    message += `<p class='message'>${message_dict[hashedValue]}</p>`;
 
     if (name !== 'shiwei.tey') {
         defaultMessages.forEach(paragraph => {
