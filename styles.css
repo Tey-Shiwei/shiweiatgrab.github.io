@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 330px; /* Setting a max-width */
+    max-width: 300px; /* Setting a max-width */
     margin: auto; /* This will center your wrapper */
 }
 
