@@ -128,7 +128,7 @@ window.onload = function () {
     images.forEach((img) => {
         var rotation = Math.floor(Math.random() * 91) - 45;
         img.style.transform = `rotate(${rotation}deg)`;  // Initial rotation
-        img.addEventListener("mouseover", () => img.style.transform = `scale(2)`); // Remove rotation and add scale 2x upon hover
+        img.addEventListener("mouseover", () => img.style.transform = `scale(1.3)`); // Remove rotation and add scale 2x upon hover
         img.addEventListener("mouseout", () => img.style.transform = `rotate(${rotation}deg)`);  // Reset to rotation when not hovering
     });
 };
