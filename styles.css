@@ -1,18 +1,45 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 330px; /* Setting a max-width */
+    margin: auto; /* This will center your wrapper */
+}
+
+#container {
+    max-width: 600px;
+    width: 100%;
+    float: none;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: height 2s ease;
+    opacity: 0.8;
+}
+
 body {
-    font-family: 'Dancing Script', cursive;
     background-color: #f3fff3;
     margin: 0;
     padding: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     transition: background-color 10s ease;
 }
 
 h1 {
+    font-family: 'Dancing Script', cursive;
     color: #4CAF50;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 
@@ -31,72 +58,54 @@ button {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Times', cursive;
     margin-top: 10px;
+    opacity: 0;
+    animation: appear 2s forwards, shake 3s ease infinite;
+}
+/* 
+button:hover {
+    background-color: #45a049;
+} */
+
+
+
+#inputtext {
+    color: #80E27E;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-family: 'Times', cursive;
     opacity: 0;
     animation: appear 2s forwards;
 }
 
-button:hover {
-    background-color: #45a049;
-}
+/* #inputtext.shake {
+    animation: appear 2s forwards, shake 3s ease infinite;
+} */
 
-button2 {
+#stopShaking {
+    display: block; /* this makes the button take 100% width, placing it on a new line, effectively below your container */
+    font-family: 'Times', cursive;
     background-color: #FF0000;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 4px 4px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-    font-family: 'Dancing Script', cursive;
     margin-top: 10px;
 }
 
-button2:hover {
+/* #stopShaking:hover {
     background-color: #8B0000;
-}
+} */
 
-#container {
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: height 2s ease;
-    opacity: 0.8;
-}
-
-#inputtext {
-    color: #80E27E;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    font-family: 'Times', cursive;
-    opacity: 0;
-    animation: appear 2s forwards;
-}
-
-#inputtext.shake {
-    animation: appear 2s forwards, shake 3s ease infinite;
-}
-
-#stopShaking.shake {
+/* #stopShaking.clicked {
+    background-color: #80E27E;
+    color: #fff;
     animation: shake 3s ease infinite;
-}
-
-#stopShaking.clicked {
-    background-color: transparent;
-    color: #80E27E;
-    font-family: 'Times', cursive;
-}
+} */
 
 .message {
     opacity: 0;
@@ -121,8 +130,8 @@ button2:hover {
 
 .background-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
     position: absolute;
@@ -137,6 +146,7 @@ img.bgImage {
     width: 200px;
     object-fit: contain;
     transition: transform 1s, opacity 1s;
+    pointer-events: auto;
 }
 
 img.bgImage:hover {
@@ -162,15 +172,15 @@ img.bgImage:hover {
 
 @keyframes shake {
     0%   { transform: translate(1px, 1px) rotate(0deg); }
-    10%  { transform: translate(-25px, -2px) rotate(-1deg); }
-    20%  { transform: translate(-25px, 0) rotate(1deg); }
-    30%  { transform: translate(25px, 2px) rotate(0deg); }
-    40%  { transform: translate(25px, -1px) rotate(1deg); }
-    50%  { transform: translate(-25px, 2px) rotate(-1deg); }
-    60%  { transform: translate(-25px, 1px) rotate(0deg); }
-    70%  { transform: translate(25px, 1px) rotate(-1deg); }
-    80%  { transform: translate(-25px, -1px) rotate(1deg); }
-    90%  { transform: translate(25px, 2px) rotate(0deg); }
+    10%  { transform: translate(-1px, -2px) rotate(-1deg); }
+    20%  { transform: translate(-1px, 0) rotate(1deg); }
+    30%  { transform: translate(1px, 2px) rotate(0deg); }
+    40%  { transform: translate(1px, -1px) rotate(1deg); }
+    50%  { transform: translate(-1px, 2px) rotate(-1deg); }
+    60%  { transform: translate(-1px, 1px) rotate(0deg); }
+    70%  { transform: translate(1px, 1px) rotate(-1deg); }
+    80%  { transform: translate(-1px, -1px) rotate(1deg); }
+    90%  { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
 
