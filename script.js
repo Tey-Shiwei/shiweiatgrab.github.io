@@ -109,7 +109,7 @@ revealButton.addEventListener('click', async function () {
     inputtext.innerHTML = 'Point the pictures ' + '<i class="fas fa-hand-point-right"></i>';
     inputtext.style.marginTop = "5px";
     inputtext.style.marginBottom = "5px";
-    container.style.pointerEvents = 'none';
+    // container.style.pointerEvents = 'none';
     // inputtext.classList.remove('shake')
     // stopShaking.classList.add('hidden');
     // Changes
