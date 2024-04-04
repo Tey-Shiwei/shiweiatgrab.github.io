@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 300px; /* Setting a max-width */
-    margin: auto; /* This will center your wrapper */
+    max-width: 300px;
+    margin: auto;
 }
 
 #container {
@@ -63,12 +63,11 @@ button {
     opacity: 0;
     animation: appear 2s forwards, shake 3s ease infinite;
 }
+
 /* 
 button:hover {
     background-color: #45a049;
 } */
-
-
 
 #inputtext {
     color: #80E27E;
@@ -84,7 +83,7 @@ button:hover {
 } */
 
 #stopShaking {
-    display: block; /* this makes the button take 100% width, placing it on a new line, effectively below your container */
+    display: block;
     font-family: 'Times', cursive;
     background-color: #FF0000;
     color: #fff;
@@ -114,11 +113,15 @@ button:hover {
 }
 
 .typing-effect {
-    border-right: 0.1em solid black; /* simulate the typing cursor */
-    white-space: nowrap; /* prevent wrapping on whitespace */
-    overflow: hidden; /* ensure that the content is clipped */
-    width: 30ch; /* define the display width */
-    animation: 
+    border-right: 0.1em solid black;
+    /* simulate the typing cursor */
+    white-space: nowrap;
+    /* prevent wrapping on whitespace */
+    overflow: hidden;
+    /* ensure that the content is clipped */
+    width: 30ch;
+    /* define the display width */
+    animation:
         typing 2s steps(14, end),
         blink-caret .5s step-end infinite,
         cursor-blink-off 0.1s forwards 1.5s;
@@ -141,6 +144,19 @@ button:hover {
     height: 100%;
 }
 
+.watery-text {
+    animation: wavy 5s ease-in-out infinite;
+}
+
+@keyframes wavy {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+}
+
 img.bgImage {
     opacity: 0;
     width: 200px;
@@ -155,8 +171,13 @@ img.bgImage:hover {
 }
 
 @keyframes appear {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
@@ -164,6 +185,7 @@ img.bgImage:hover {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -171,26 +193,67 @@ img.bgImage:hover {
 }
 
 @keyframes shake {
-    0%   { transform: translate(1px, 1px) rotate(0deg); }
-    10%  { transform: translate(-1px, -2px) rotate(-1deg); }
-    20%  { transform: translate(-1px, 0) rotate(1deg); }
-    30%  { transform: translate(1px, 2px) rotate(0deg); }
-    40%  { transform: translate(1px, -1px) rotate(1deg); }
-    50%  { transform: translate(-1px, 2px) rotate(-1deg); }
-    60%  { transform: translate(-1px, 1px) rotate(0deg); }
-    70%  { transform: translate(1px, 1px) rotate(-1deg); }
-    80%  { transform: translate(-1px, -1px) rotate(1deg); }
-    90%  { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-1px, 0) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-1px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(1px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
 
 @keyframes typing {
-    from { width: 0; }
+    from {
+        width: 0;
+    }
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: black; }
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: black;
+    }
 }
 
 @keyframes cursor-blink-off {
