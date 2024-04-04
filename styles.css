@@ -82,7 +82,7 @@ button:hover {
     animation: appear 2s forwards, shake 3s ease infinite;
 } */
 
-#stopShaking {
+/* #stopShaking {
     display: block;
     font-family: 'Times', cursive;
     background-color: #FF0000;
@@ -94,7 +94,7 @@ button:hover {
     border-radius: 5px;
     transition: background-color 0.3s;
     margin-top: 10px;
-}
+} */
 
 /* #stopShaking:hover {
     background-color: #8B0000;
